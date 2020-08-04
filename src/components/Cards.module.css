@@ -1,0 +1,10 @@
+.card{
+    margin-top: 2% !important;
+    margin-left: 2% !important;
+    margin-bottom: 2% !important;
+    margin-right: 2% !important;
+    background-color: yellow !important;
+    width: 250px !important;
+    height: 180px !important;
+    float: right !important;
+}
