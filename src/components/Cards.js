@@ -13,17 +13,36 @@ class Cards extends React.Component {
 
     render() {
         const resultArray = this.props.resultArray;
+        const userID = this.props.userID;
         return (
             <Grid item component={Card} xs={6} md={3} className={styles.card}>
                 <CardContent>
-                <ul>
-                    <li>User Id: {resultArray.userId}</li>
-                    <li>Task Title: {resultArray.title}</li>
-                    <li>Is Task completed: {(resultArray.completed) ? 'true' : 'false'}</li>
-                </ul>
+                    <h2>User Id: {userID}</h2>
+                    <h4>Tasks:</h4> 
+                    {resultArray.forEach( task => { 
+                            return (
+                                <div>
+                                    <span>Task title: {task.title}</span>
+                                    <span>Is Completed: {task.completed ? 'TRUE' : 'FALSE'}</span>
+                                </div>
+                            );
+                        })}  
                 </CardContent>
             </Grid>
-        );
+        )
+        // return (
+        //     <div>
+        //         {
+        //             resultArray !== null && Object.keys(resultArray).map((key, i) => {
+        //                return ( <p key={i}>
+        //                 <span>User Id: {key}</span>
+        //                 <span>Title: {resultArray[key]}</span>
+        //                 </p> )
+        //             }
+        //             )
+        //         }
+        //     </div>
+        // );
     }
 }
 

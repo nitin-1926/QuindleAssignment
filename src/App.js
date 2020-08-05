@@ -11,9 +11,15 @@ class App extends React.Component {
 
   async getAPIResult(){
       const fetchedData = await fetchData();
-      console.log(fetchedData.data);
+      const output = fetchedData.data.reduce((result, value) => { 
+        result[value.userId] = result[value.userId] || []; 
+        result[value.userId].push({ title: value.title, isCompleted: value.completed });
+        return result; 
+      }, {});
+      console.log(typeof(output));
+      console.log(output);
         this.setState({
-          data: fetchedData.data,
+          data: output,
         });
   }
 
@@ -21,17 +27,16 @@ class App extends React.Component {
 
     return (
       <div>
-        <button onClick={() => this.getAPIResult()}>Click Me</button>
-        { 
-          this.state.data !== null && (this.state.data).map( (user,key) => {
-            return <Cards id={key} resultArray = {user} />
-          })
-        }
-        {/* { 
-          this.state.data !== null && (this.state.data).map( (user,key) => {
-              return <li id={key}>{user.title}</li>
-          })
-        } */}
+          <button onClick={() => this.getAPIResult()}>Click Me</button>
+          {/* { 
+            this.state.data !== null && (this.state.data).map( (user,key) => {
+                return <li id={key}>{user}</li>
+            })
+          } */}
+          {/* <Cards resultArray = {this.state.data}/> */}
+          { this.state.data !== null && Object.keys(this.state.data).map( (key,value) => {
+              return <Cards id={key} resultArray = {this.state.data[key]} userID = {key} /> 
+          })}
       </div>
     );
   }
