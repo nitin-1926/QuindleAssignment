@@ -24,8 +24,8 @@ class Cards extends React.Component {
                     {resultArray.map( value => { 
                             return (
                                 <div>
-                                    <span>Title: {value.title}</span><br />
-                                    <span>Is Completed: {value.isCompleted ? 'TRUE' : 'FALSE'}</span><br /><br />
+                                    <span><b>Title:</b> {value.title}</span><br />
+                                    <span><b>Is Completed:</b> {value.isCompleted ? 'TRUE' : 'FALSE'}</span><br /><br />
                                 </div>
                             );
                         })}
