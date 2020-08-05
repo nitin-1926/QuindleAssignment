@@ -14,19 +14,22 @@ class Cards extends React.Component {
     render() {
         const resultArray = this.props.resultArray;
         const userID = this.props.userID;
+        console.log(resultArray);
         return (
             <Grid item component={Card} xs={6} md={3} className={styles.card}>
                 <CardContent>
-                    <h2>User Id: {userID}</h2>
-                    <h4>Tasks:</h4> 
-                    {resultArray.forEach( task => { 
+                    <h1>User Id: {userID}</h1>
+                    <h2>Tasks:</h2>
+                    <p> 
+                    {resultArray.map( value => { 
                             return (
                                 <div>
-                                    <span>Task title: {task.title}</span>
-                                    <span>Is Completed: {task.completed ? 'TRUE' : 'FALSE'}</span>
+                                    <span>Title: {value.title}</span><br />
+                                    <span>Is Completed: {value.isCompleted ? 'TRUE' : 'FALSE'}</span><br /><br />
                                 </div>
                             );
-                        })}  
+                        })}
+                    </p>  
                 </CardContent>
             </Grid>
         )
